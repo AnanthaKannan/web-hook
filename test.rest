@@ -1,0 +1,18 @@
+@url = http://localhost:3020
+
+###
+GET {{url}}
+Content-Type: application/json
+
+###
+POST {{url}}/webhook
+Content-Type: application/json
+
+{
+    "queryResult":{
+        "intent":{
+            "displayName":"doj"
+        },
+        "parameters":{}
+    }
+}

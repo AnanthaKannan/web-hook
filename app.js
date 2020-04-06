@@ -1,36 +1,16 @@
 const express = require("express");
 const cors = require('cors')
 
+const router = require('./router')
+
 const app = express();
 app.use(cors())
 
-const port = process.env.PORT || 3020;
 app.use(express.json());
+app.use(router);
+require("./db")();
 
-app.get('/', function (req, res) {
-    res.send('Sucessfully wroking..')
-});
-
-app.post('/webhook', async(req, res) => {
-    console.log('webhook_api_called');
-    if(!req.body) res.sendStatus(400)
-    res.setHeader('Content-Type', 'application/json')
-    const { queryResult } = req.body
-    const intent = queryResult.intent.displayName;
-    const parameters = queryResult.parameters;
-    console.log('intent', intent)
-    if(intent == 'doj'){
-    const resText = "Your date of joining is  03-06-2017"
-    const responseObj = {
-        "fulfillmentText": resText,
-        "fulfillmentMessages":[{"text": { "text":[resText] } }],
-        "source":""
-    }
-    console.log('responseObj', responseObj)
-    return res.json(responseObj);
-}
-return res.sendStatus(400)
-})
+const port = process.env.PORT || 3020;
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`);
