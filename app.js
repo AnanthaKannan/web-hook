@@ -13,19 +13,23 @@ app.get('/', function (req, res) {
 
 app.post('/webhook', async(req, res) => {
     console.log('webhook_api_called');
-    // const { text } = req.body;
     if(!req.body) res.sendStatus(400)
     res.setHeader('Content-Type', 'application/json')
-    const queryResult = req.body.queryResult;
-    // const parameters = req.body.queryResult.parameters;
-    console.log(queryResult)
+    const { queryResult } = req.body
+    const intent = queryResult.intent.displayName;
+    const parameters = queryResult.parameters;
+    console.log('intent', intent)
+    if(intent == 'doj'){
+    const resText = "Your date of joining is  03-06-2017"
     const responseObj = {
         "fulfillmentText": "This is a text response",
-        "fulfillmentMessages":[{"text": { "text":["this response came from webhook"] } }],
+        "fulfillmentMessages":[{"text": { "text":[resText] } }],
         "source":""
     }
     console.log('responseObj', responseObj)
     return res.json(responseObj);
+}
+return res.sendStatus(400)
 })
 
 app.listen(port, () => {
