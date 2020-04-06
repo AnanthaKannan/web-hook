@@ -18,10 +18,10 @@ app.post('/webhook', async(req, res) => {
     res.setHeader('Content-Type', 'application/json')
     const queryResult = req.body.queryResult;
     // const parameters = req.body.queryResult.parameters;
-    console.log(queryResult)
+    // console.log(queryResult)
     const responseObj = {
         "fulfillmentText": "This is a text response",
-        "fulfillmentMessages":[{"text": { "text":"this response came from webhook" } }],
+        "fulfillmentMessages":[{"text": { "text":["this response came from webhook"] } }],
         "source":""
     }
     console.log('responseObj', responseObj)
