@@ -22,7 +22,7 @@ app.post('/webhook', async(req, res) => {
     if(intent == 'doj'){
     const resText = "Your date of joining is  03-06-2017"
     const responseObj = {
-        "fulfillmentText": "This is a text response",
+        "fulfillmentText": resText,
         "fulfillmentMessages":[{"text": { "text":[resText] } }],
         "source":""
     }
