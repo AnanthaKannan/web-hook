@@ -18,7 +18,8 @@ router.post('/webhook', async(req, res) => {
     console.log('intent', intent)
     let resText = null;
     if(intent == 'doj'){
-        resText = fetch.doj()
+        data = await fetch.read(64);
+        resText= `Your date of joining is ${data.doj}`
     }
     else{
         res.sendStatus(400);
