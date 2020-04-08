@@ -11,8 +11,12 @@ Content-Type: application/json
 {
     "queryResult":{
         "intent":{
-            "displayName":"doj"
+            "displayName":"empId"
         },
-        "parameters":{}
+        "parameters": {
+      "number": 64
+    }
     }
 }
+
+
