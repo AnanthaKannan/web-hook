@@ -18,10 +18,10 @@ router.post('/webhook', async(req, res) => {
     const parameters = queryResult.parameters;
     console.log('intent', intent)
     let resText = null;
-    const { number } = parameters;
+    const { empId } = parameters;
 
-    console.log('EmpId', number)
-    data = await fetch.read(number);
+    console.log('EmpId', empId)
+    data = await fetch.read(empId);
     if(intent == 'empId')
         resText= `Hi!, ${data.name}. I am HR-BOT, How can i help you ?`
     else if(intent == 'doj')

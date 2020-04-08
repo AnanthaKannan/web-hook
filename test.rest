@@ -14,7 +14,7 @@ Content-Type: application/json
             "displayName":"empId"
         },
         "parameters": {
-      "number": 64
+      "empId": 64
     }
     }
 }
